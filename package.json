@@ -1,0 +1,24 @@
+{
+  "name": "joeventure-tours",
+  "version": "1.0.0",
+  "description": "Official website for Joeventure Tours and Travel - Kenya Safari Experiences",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "kenya",
+    "safari",
+    "tours",
+    "travel",
+    "maasai-mara",
+    "kilimanjaro"
+  ],
+  "author": "Joeventure Tours & Travel",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
