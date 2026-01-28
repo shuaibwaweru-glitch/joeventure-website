@@ -3,41 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Joeventure Tours & Travel - Experience authentic Kenya safari adventures, mountain treks, and cultural tours. Book your dream African adventure today!">
-    <meta name="keywords" content="Kenya safari, Maasai Mara tours, Kilimanjaro trek, African adventures, Kenya travel">
+    <meta name="description" content="Joeventure Tours & Travel - Experience authentic Kenya safari adventures, mountain treks, and cultural tours.">
     <title>Joeventure Tours & Travel | Authentic Kenya Safari Experiences</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="public/images/logo/joeventure-logo.png">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="src/css/main.css">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Joeventure Tours & Travel">
-    <meta property="og:description" content="Experience authentic Kenya safari adventures">
-    <meta property="og:image" content="public/images/logo/joeventure-logo.png">
-    <meta property="og:type" content="website">
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+        
+        /* CSS Variables */
+        :root {
+            --color-safari-green: #4A7C59;
+            --color-sunset-orange: #E67E22;
+            --color-clay-brown: #8B4513;
+            --color-light-sand: #F5F1E8;
+            --color-white: #FFFFFF;
+            --color-dark: #2C3E50;
+            --color-gray: #7F8C8D;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            line-height: 1.6;
+            background: var(--color-white);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            color: var(--color-safari-green);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--color-sunset-orange);
+        }
+        
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--color-sunset-orange);
+            color: var(--color-white);
+        }
+        
+        .btn-primary:hover {
+            background: #D35400;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-secondary {
+            background: var(--color-safari-green);
+            color: var(--color-white);
+        }
+        
+        .btn-secondary:hover {
+            background: #3A5F45;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--color-safari-green);
+        }
+        
+        .card {
+            background: var(--color-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .card-content {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--color-dark);
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-sunset-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-dark);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(74,124,89,0.9), rgba(230,126,34,0.8));
+            padding: 120px 0;
+            color: white;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            color: var(--color-sunset-orange);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #ECF0F1;
+            display: block;
+            padding: 0.5rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-sunset-orange);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--color-gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 77px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 77px);
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
     <header class="header">
         <nav class="container nav">
-            <a href="index.html">
-                <img src="public/images/logo/joeventure-logo.png" alt="Joeventure Tours Logo" class="logo">
+            <a href="/">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='10' y='50' font-family='Playfair Display' font-size='24' font-weight='bold' fill='%234A7C59'%3EJoeventure%3C/text%3E%3Ctext x='10' y='70' font-family='Inter' font-size='12' fill='%23E67E22'%3ETOURS AND TRAVEL%3C/text%3E%3C/svg%3E" alt="Joeventure Tours" class="logo">
             </a>
             
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
-                <li><a href="pages/packages.html">Packages</a></li>
-                <li><a href="pages/destinations.html">Destinations</a></li>
-                <li><a href="pages/support.html">Support</a></li>
-                <li><a href="pages/gallery.html">Gallery</a></li>
-                <li><a href="pages/contact.html" class="btn btn-primary">Book Now</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="btn btn-primary">Book Now</a></li>
             </ul>
             
-            <div class="hamburger">
+            <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -46,19 +373,19 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero" style="background: linear-gradient(135deg, rgba(74,124,89,0.9), rgba(230,126,34,0.8)), url('public/images/gallery/safari-bg.jpg'); background-size: cover; background-position: center; padding: 120px 0; color: white; text-align: center;">
-        <div class="hero-content container">
-            <h1 style="color: white; margin-bottom: 1.5rem;">Discover the Magic of Kenya</h1>
-            <p style="font-size: 1.25rem; color: white; margin-bottom: 2rem;">Curated safari experiences, mountain adventures, and authentic cultural journeys</p>
-            <div class="hero-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="pages/packages.html" class="btn btn-primary">Explore Packages</a>
-                <a href="pages/contact.html" class="btn btn-outline" style="color: white; border-color: white;">Free Consultation</a>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Discover the Magic of Kenya</h1>
+            <p>Curated safari experiences, mountain adventures, and authentic cultural journeys</p>
+            <div class="hero-buttons">
+                <a href="#packages" class="btn btn-primary">Explore Packages</a>
+                <a href="#contact" class="btn btn-outline">Free Consultation</a>
             </div>
         </div>
     </section>
 
     <!-- FEATURED PACKAGES -->
-    <section class="section">
+    <section class="section" id="packages">
         <div class="container">
             <div class="section-title">
                 <h2>Featured Safari Packages</h2>
@@ -71,7 +398,7 @@
                         <h3 class="card-title">🦁 Maasai Mara Classic</h3>
                         <p>5 days of wildlife viewing in Kenya's premier game reserve. Experience the Great Migration and witness the Big Five.</p>
                         <p style="color: var(--color-sunset-orange); font-weight: 600; margin-top: 1rem;">From $1,200 per person</p>
-                        <a href="pages/packages.html" class="btn btn-secondary" style="margin-top: 1rem;">View Details</a>
+                        <a href="#contact" class="btn btn-secondary" style="margin-top: 1rem;">Book Now</a>
                     </div>
                 </div>
                 
@@ -80,7 +407,7 @@
                         <h3 class="card-title">🏔️ Kilimanjaro Summit</h3>
                         <p>7-day trek to Africa's highest peak. Expert guides and full support for an unforgettable mountain adventure.</p>
                         <p style="color: var(--color-sunset-orange); font-weight: 600; margin-top: 1rem;">From $1,800 per person</p>
-                        <a href="pages/packages.html" class="btn btn-secondary" style="margin-top: 1rem;">View Details</a>
+                        <a href="#contact" class="btn btn-secondary" style="margin-top: 1rem;">Book Now</a>
                     </div>
                 </div>
                 
@@ -89,7 +416,7 @@
                         <h3 class="card-title">🏖️ Coastal Paradise</h3>
                         <p>Relax on pristine beaches after your safari. Diani Beach, water sports, and Swahili culture experiences.</p>
                         <p style="color: var(--color-sunset-orange); font-weight: 600; margin-top: 1rem;">From $800 per person</p>
-                        <a href="pages/packages.html" class="btn btn-secondary" style="margin-top: 1rem;">View Details</a>
+                        <a href="#contact" class="btn btn-secondary" style="margin-top: 1rem;">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -97,34 +424,34 @@
     </section>
 
     <!-- WHY CHOOSE US -->
-    <section class="section" style="background: var(--color-light-sand);">
+    <section class="section" style="background: var(--color-light-sand);" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>Why Choose Joeventure?</h2>
             </div>
             
             <div class="grid grid-3">
-                <div class="feature" style="text-align: center; padding: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
                     <h4>Expert Guides</h4>
-                    <p>Local knowledge and passion for wildlife. Our guides bring years of experience and deep understanding of Kenya's ecosystems.</p>
+                    <p>Local knowledge and passion for wildlife. Our guides bring years of experience.</p>
                 </div>
-                <div class="feature" style="text-align: center; padding: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🌱</div>
                     <h4>Sustainable Tourism</h4>
-                    <p>Supporting communities and conservation. We work with local communities to ensure tourism benefits everyone.</p>
+                    <p>Supporting communities and conservation. We work with local communities.</p>
                 </div>
-                <div class="feature" style="text-align: center; padding: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
                     <h4>24/7 Support</h4>
-                    <p>We're with you every step of the journey. From planning to post-trip, our team is always available.</p>
+                    <p>We're with you every step of the journey. Always available.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS PREVIEW -->
-    <section class="section">
+    <!-- TESTIMONIALS -->
+    <section class="section" id="testimonials">
         <div class="container">
             <div class="section-title">
                 <h2>What Our Travelers Say</h2>
@@ -133,14 +460,14 @@
             <div class="grid grid-2">
                 <div class="card">
                     <div class="card-content">
-                        <p style="font-style: italic; margin-bottom: 1rem;">"An absolutely incredible experience! Joe and his team made our safari unforgettable. We saw all of the Big Five and the accommodations were top-notch."</p>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"An absolutely incredible experience! Joe and his team made our safari unforgettable. We saw all of the Big Five!"</p>
                         <p style="font-weight: 600;">- Sarah M., United States</p>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-content">
-                        <p style="font-style: italic; margin-bottom: 1rem;">"Professional, knowledgeable, and so friendly. The attention to detail and personalized service exceeded our expectations. Highly recommend!"</p>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"Professional, knowledgeable, and friendly. The attention to detail exceeded our expectations. Highly recommend!"</p>
                         <p style="font-weight: 600;">- James & Emma, UK</p>
                     </div>
                 </div>
@@ -149,11 +476,15 @@
     </section>
 
     <!-- CTA SECTION -->
-    <section class="section cta-section" style="background: var(--color-safari-green); color: white; text-align: center; padding: 5rem 0;">
+    <section class="section" style="background: var(--color-safari-green); color: white; text-align: center;" id="contact">
         <div class="container">
             <h2 style="color: white; margin-bottom: 1rem;">Ready for Your African Adventure?</h2>
             <p style="color: white; font-size: 1.2rem; margin-bottom: 2rem;">Let's plan your dream safari together</p>
-            <a href="pages/contact.html" class="btn btn-primary" style="background: var(--color-sunset-orange);">Start Planning</a>
+            <p style="color: white; font-size: 1.1rem; margin-bottom: 2rem;">
+                📧 Email: info@joeventuretours.com<br>
+                📱 WhatsApp: +254 XXX XXX XXX
+            </p>
+            <a href="mailto:info@joeventuretours.com" class="btn btn-primary">Contact Us Now</a>
         </div>
     </section>
 
@@ -162,51 +493,65 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="public/images/logo/joeventure-logo.png" alt="Joeventure Logo" style="height: 80px; margin-bottom: 1rem;">
+                    <h4>Joeventure Tours</h4>
                     <p>Experience authentic Kenya with expert guides and sustainable practices.</p>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="pages/about.html">About Us</a></li>
-                        <li><a href="pages/packages.html">Packages</a></li>
-                        <li><a href="pages/destinations.html">Destinations</a></li>
-                        <li><a href="pages/support.html">Support</a></li>
-                        <li><a href="pages/gallery.html">Gallery</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>📧 Email: info@joeventuretours.com</p>
-                    <p>📱 Phone: +254 XXX XXX XXX</p>
+                    <p>📧 info@joeventuretours.com</p>
+                    <p>📱 +254 XXX XXX XXX</p>
                     <p>📍 Nairobi, Kenya</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <p>Stay connected for travel inspiration and special offers</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;">📘</a>
-                        <a href="#" style="margin-right: 1rem; font-size: 1.5rem;">📷</a>
-                        <a href="#" style="font-size: 1.5rem;">🐦</a>
-                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Joeventure Tours & Travel. All rights reserved. | Designed with ❤️ for African Adventures</p>
+                <p>&copy; 2026 Joeventure Tours & Travel. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" style="position: fixed; bottom: 2rem; right: 2rem; background: var(--color-sunset-orange); color: white; padding: 1rem; border-radius: 50%; width: 50px; height: 50px; display: none; cursor: pointer; box-shadow: var(--shadow-lg); z-index: 999;">
-        ↑
-    </button>
-
-    <!-- Scripts -->
-    <script src="src/js/main.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const links = document.querySelectorAll('.nav-links a');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
